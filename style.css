@@ -1,0 +1,45 @@
+body {
+    background-color: burlywood;
+}
+
+.button-reset {
+    width: 100px;
+    height: 40px;
+}
+
+.container-draw {
+    background-color: hsl(180, 59%, 62%);
+    width: 600px;
+    height: 600px;
+    margin: 40px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container-reset {
+    margin: 40px;
+    background-color: blueviolet;
+}
+
+.main-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: dimgray;
+}
+
+.cell-column {
+    background-color: rgb(196, 85, 196);
+
+    display: flex;
+    flex-grow: 1;
+}
+
+.cell-row {
+    background-color: rgb(228, 240, 68);
+    margin: 1px;
+
+    display: flex;
+    flex-grow: 1;
+}
