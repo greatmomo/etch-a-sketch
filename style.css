@@ -8,7 +8,7 @@ body {
 }
 
 .container-draw {
-    background-color: hsl(180, 59%, 62%);
+    background-color: whitesmoke;
     width: 600px;
     height: 600px;
     margin: 40px;
@@ -37,8 +37,8 @@ body {
 }
 
 .cell-row {
-    background-color: rgb(228, 240, 68);
-    margin: 1px;
+    background-color: whitesmoke;
+    
 
     display: flex;
     flex-grow: 1;
