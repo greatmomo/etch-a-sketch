@@ -1,3 +1,5 @@
+let colorMode = false;
+
 function generateCells(cells) {
     const container = document.querySelector('.container-draw');
     // cell-column cell-row
@@ -26,7 +28,11 @@ function generateCells(cells) {
 
 // create a function that changes the color of the div on 'hover'
 function sketch(e) {
-    e.target.style.backgroundColor = "black";
+    if (colorMode) {
+        e.target.style.backgroundColor = document.querySelector('#draw-color').value;
+    } else {
+        e.target.style.backgroundColor = "black";
+    }
 }
 
 function resetSketch() {
@@ -47,3 +53,15 @@ function resetSketch() {
 
 generateCells(16);
 document.querySelector('.button-reset').addEventListener('click', resetSketch);
+
+document.querySelector('.button-black').addEventListener('click', function(e) {
+    colorMode = false;
+    e.target.style.border = '2px solid black';
+    document.querySelector('.button-color').style.border = '0px solid black';
+});
+
+document.querySelector('.button-color').addEventListener('click', function(e) {
+    colorMode = true;
+    e.target.style.border = '2px solid black';
+    document.querySelector('.button-black').style.border = '0px solid black';
+});
