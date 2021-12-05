@@ -1,4 +1,5 @@
 let colorMode = false;
+let gridSize = 16;
 
 function generateCells(cells) {
     const container = document.querySelector('.container-draw');
@@ -35,24 +36,29 @@ function sketch(e) {
     }
 }
 
-function resetSketch() {
-    // delete divs
-    const elements = document.querySelectorAll('.cell-column');
-    elements.forEach(element => {
-        element.parentNode.removeChild(element);
-    })
-
-    // prompt new size
-    let newSize = 0;
-    while (newSize < 1 || newSize > 100) {
-        newSize = prompt('Please enter a new size (1-100):');
+function resetSketch(inputSize) {
+    if (isNaN(inputSize)) {
+        document.querySelector('.warning-text').textContent = `Please enter a number`;
+        return;
     }
 
-    generateCells(newSize);
+    if (inputSize < 1 || inputSize > 100) {
+        document.querySelector('.warning-text').textContent = `Please enter a value between 1 and 100!`;
+    } else {
+        document.querySelector('.warning-text').textContent = ``;
+        
+        const elements = document.querySelectorAll('.cell-column');
+        elements.forEach(element => {
+            element.parentNode.removeChild(element);
+        })
+
+        generateCells(inputSize);
+        gridSize = inputSize;
+    }
 }
 
-generateCells(16);
-document.querySelector('.button-reset').addEventListener('click', resetSketch);
+generateCells(gridSize);
+document.querySelector('.button-reset').addEventListener('click', clearSketch);
 
 document.querySelector('.button-black').addEventListener('click', function(e) {
     colorMode = false;
@@ -65,3 +71,18 @@ document.querySelector('.button-color').addEventListener('click', function(e) {
     e.target.style.border = '2px solid black';
     document.querySelector('.button-black').style.border = '0px solid black';
 });
+
+function newValue(e) {
+    if (event.key === 'Enter') {
+        resetSketch(+e.value);
+    }
+}
+
+function clearSketch() {
+    const elements = document.querySelectorAll('.cell-column');
+    elements.forEach(element => {
+        element.parentNode.removeChild(element);
+    })
+
+    generateCells(gridSize);
+}
