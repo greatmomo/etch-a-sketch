@@ -11,7 +11,8 @@
 <body>
     <div class="main-screen">
         <div class="container-buttons">
-            <input type="text" placeholder='16' class='textInput' onkeydown="newValue(this)"/>
+            <label for='textInputId'>Grid Size:</label>
+            <input type="text" placeholder='16' id='textInputId' class='textInput' onkeydown="newValue(this)"/>
             <button class="button-reset">Clear</button>
             <button class="button-black">Black</button>
             <button class="button-color">Color</button>
@@ -22,6 +23,10 @@
         <div class="warning-text"></div>
     
         <div class="container-draw"></div>
+    </div>
+
+    <div class='footer'>
+        <div class='copywrite'>Great Momo® 2021</div>
     </div>
 </body>
 </html>
